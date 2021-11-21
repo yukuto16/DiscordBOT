@@ -1,8 +1,5 @@
 # インストールした discord.py を読み込む
-import discord
-
-# 自分のBotのアクセストークンに置き換えてください
-TOKEN = 'OTEwMTQyNTkwOTMyODkzNzU2.YZOiVw.tMI1qZ2fw0mHrdbg7LoTaZg_yD8'
+import discord, os
 
 # 接続に必要なオブジェクトを生成
 client = discord.Client()
@@ -36,4 +33,4 @@ async def on_message(message):
 
 
 # Botの起動とDiscordサーバーへの接続
-client.run(TOKEN)
+client.run(os.environ["TOKEN"])

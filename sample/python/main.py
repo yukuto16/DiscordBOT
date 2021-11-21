@@ -1,4 +1,4 @@
-import discord
+import discord, os
 
 client = discord.Client()
 
@@ -12,4 +12,4 @@ async def on_message(message):
     msg = message.author.mention + " Hi."
     await message.channel.send("お呼びかな？")
 
-client.run("OTEwMTQyNTkwOTMyODkzNzU2.YZOiVw.tMI1qZ2fw0mHrdbg7LoTaZg_yD8")
+client.run(os.environ["TOKEN"])
