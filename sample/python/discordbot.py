@@ -1,19 +1,10 @@
-# インストールした discord.py を読み込む
-import discord
-
-# 自分のBotのアクセストークンに置き換えてください
-TOKEN = 'OTEwMTQyNTkwOTMyODkzNzU2.YZOiVw.hQ61aLEL5GB4oeMhjMbELhRLn3M'
-
-# エラー回避
-import sys
-sys.setrecurdionlimit(10000)
-
-# 変数モジュールをインポート
 import pickle
-import bot_config
+import discord
+import os
+from sample.python import bot_config
 
-# 接続に必要なオブジェクトを生成
 client = discord.Client()
+
 
 # 起動時に動作する処理
 @client.event
@@ -21,16 +12,17 @@ async def on_ready():
     # dumpファイル作成i
     PF = [bot_config.HELP_RESUL, bot_config.USER_ID]
     with open('temp.binaryfile', 'wb') as BF:
-         pickle.dump(PF , BF)
+        pickle.dump(PF, BF)
     # 起動したらターミナルにログイン通知が表示される
     print('ログインしました')
+
 
 # メッセージ受信時に動作する処理
 @client.event
 async def on_message(message):
     # dumpファイル読み込み
-    with open('temp.binaryfile', 'rb') as BF:)
-      PF =  pickle.load(BF)
+    with open('temp.binaryfile', 'rb') as BF:
+        PF = pickle.load(BF)
 
     # メッセージ送信者がBotだった場合は無視する
     if message.author.bot:
@@ -45,27 +37,29 @@ async def on_message(message):
         USER_ID = message.author
         print(USER_ID)
         await message.channel.send \
-                ('####要件をどうぞ####\n'\
-                 '1：アラームの設定\n'\
-                 '2：自動切断設定\n'\
-                 '3：なんでもない')
+            ('####要件をどうぞ####\n' \
+             '1：アラームの設定\n' \
+             '2：自動切断設定\n' \
+             '3：なんでもない')
 
         # dumpファイル保存
-        PF = [HELP_RESUL, USER_ID]
+        PF = [HELP_RESULT, USER_ID]
         with open('temp.binaryfile', 'wb') as BF:
-        pickle.dump(PF , BF)
+            pickle.dump(PF, BF)
 
     # /help_yukuto -> 1
-    if message.content == 1: 
-#and\
-#message.author == USER_ID:
+    if message.content == 1:
+        # and\
+        # message.author == USER_ID:
         print(message.author)
         print(PF)
-#await message.channel.send \
-#('####アラームを設定しますか？####')
 
-#書き出し処理
+
+# await message.channel.send \
+# ('####アラームを設定しますか？####')
+
+# 書き出し処理
 joblib.dump(bot_config)
 
 # Botの起動とDiscordサーバーへの接続
-client.run(TOKEN)
+client.run(os.environ["TOKEN"])
