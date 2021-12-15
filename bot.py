@@ -17,7 +17,9 @@ class Client(discord.Client):
 
     @bot.command()
     async def help(ctx):
-        await ctx.send('###用件をどうぞ###\n 1:アラームの設定\n 2:自動切断設定\n 3:なんでもない')
+        await ctx.send('**###ヘルプ###**\n'
+                       '`/alarm` アラーム設定\n'
+                       '`/dc` 自動切断設定')
 
 
 client = Client()
