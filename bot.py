@@ -25,5 +25,10 @@ class Client(discord.Client):
     async def alarm(ctx):
         pass
 
+    @bot.command()
+    async def dc(ctx):
+        pass
+
+
 client = Client()
 client.run(os.environ["TOKEN"])
