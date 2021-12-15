@@ -21,6 +21,9 @@ class Client(discord.Client):
                        '`/alarm` アラーム設定\n'
                        '`/dc` 自動切断設定')
 
+    @bot.command()
+    async def alarm(ctx):
+        pass
 
 client = Client()
 client.run(os.environ["TOKEN"])
