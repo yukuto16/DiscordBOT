@@ -1,16 +1,5 @@
 # インストールした discord.py を読み込む
-import discord
-
-# 自分のBotのアクセストークンに置き換えてください
-TOKEN = 'OTEwMTQyNTkwOTMyODkzNzU2.YZOiVw.hQ61aLEL5GB4oeMhjMbELhRLn3M'
-
-# エラー回避
-import sys
-sys.setrecurdionlimit(10000)
-
-# 変数モジュールをインポート
-import pickle
-import bot_config
+import discord, os
 
 # 接続に必要なオブジェクトを生成
 client = discord.Client()
@@ -68,4 +57,4 @@ async def on_message(message):
 joblib.dump(bot_config)
 
 # Botの起動とDiscordサーバーへの接続
-client.run(TOKEN)
+client.run(os.environ["TOKEN"])
