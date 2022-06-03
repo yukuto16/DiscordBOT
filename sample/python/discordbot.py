@@ -55,7 +55,7 @@ async def on_message(message):
     # リアクションされた時点で呼び出される？
     # トリガーとなるリアクションを設定できない？
     async def on_raw_reaction_add(res):
-        if res.message_id == msg_id
+        if res.message_id == msg_id:
 
             # TODO
             # アラーム処理の関数を呼び出す
