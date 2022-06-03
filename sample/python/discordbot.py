@@ -36,23 +36,35 @@ async def on_message(message):
         HELP_RESULT = 1
         USER_ID = message.author
         print(USER_ID)
-        await message.channel.send \
+        msg = await message.channel.send \
             ('####要件をどうぞ####\n' \
-             '1：アラームの設定\n' \
-             '2：自動切断設定\n' \
-             '3：なんでもない')
+             'Ⅰ：アラームの設定\n' \
+             # TODO
+             # Ⅱ：自動切断設定\n' \
+             'Ⅲ：なんでもない')
+        await msg.add_reaction(bot_config.REACTION_1)
+        # TODO
+        # await msg.add_reaction("bot_config.REACTION_2")
+        await msg.add_reaction(bot_config.REACTION_3)
+
+        msg_id = msg.id
+
+    # /help_yukuto -> Ⅰ
+    # ネスト構造
+    # TODO
+    # リアクションされた時点で呼び出される？
+    # トリガーとなるリアクションを設定できない？
+    async def on_raw_reaction_add(res):
+        if res.message_id == msg_id:
+
+            # TODO
+            # アラーム処理の関数を呼び出す
+
 
         # dumpファイル保存
         PF = [HELP_RESULT, USER_ID]
         with open('temp.binaryfile', 'wb') as BF:
             pickle.dump(PF, BF)
-
-    # /help_yukuto -> 1
-    if message.content == 1:
-        # and\
-        # message.author == USER_ID:
-        print(message.author)
-        print(PF)
 
 
 # await message.channel.send \
