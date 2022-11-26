@@ -1,7 +1,7 @@
 import pickle
 import discord
 import os
-from sample.python import bot_config
+import bot_config
 from discord.ext import tasks
 from datetime import datetime
 
