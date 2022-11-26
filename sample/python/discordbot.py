@@ -5,7 +5,7 @@ import bot_config
 from discord.ext import tasks
 from datetime import datetime
 
-client = discord.Client()
+client = discord.Client(iintents=discord.Intents.all())
 
 
 # 起動時に動作する処理
