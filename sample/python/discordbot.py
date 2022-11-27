@@ -28,7 +28,7 @@ async def loop(sec,channel_id):
 
 # メッセージ受信時に動作する処理
 @client.event
-async def on_message(message, time = 0):
+async def on_message(message, time = ""):
     # メッセージ送信者がBotだった場合は無視する
     if message.author.bot:
         return
